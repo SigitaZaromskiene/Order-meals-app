@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import { faCartShopping, faBars } from "@fortawesome/free-solid-svg-icons";
 
 function Nav() {
   return (
@@ -12,6 +12,7 @@ function Nav() {
         </div>
         <p className="nav-container__cart--number">0</p>
       </div>
+      <FontAwesomeIcon className="nav-container__cart--burger" icon={faBars} />
     </div>
   );
 }
