@@ -1,9 +1,10 @@
-import "./App.scss";
+import "./Assets/App.scss";
+import Nav from "./Components/Nav";
 
 function App() {
   return (
-    <div className="App">
-      <p>Hello</p>
+    <div className="app-container">
+      <Nav></Nav>
     </div>
   );
 }
