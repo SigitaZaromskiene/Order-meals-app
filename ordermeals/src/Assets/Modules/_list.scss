@@ -14,6 +14,12 @@
     width: 100%;
     &--left {
       @include flex(center, flex-start, column, 8px);
+
+      p {
+        color: $secondaryPurple;
+        font-weight: 600;
+        font-size: 1.2rem;
+      }
     }
 
     &--right {
