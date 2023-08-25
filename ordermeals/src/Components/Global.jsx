@@ -7,6 +7,9 @@ export const GlobalProvider = ({ children }) => {
   const [menuList, setMenuList] = useState(null);
   const [errMessage, setErrMessage] = useState(null);
   const [lastUpdate, setLastUpdate] = useState(Date.now());
+
+  const [cart, setCart] = useState(null);
+  const [addItem, setAddItem] = useState(null);
   return (
     <Global.Provider
       value={{
@@ -16,6 +19,10 @@ export const GlobalProvider = ({ children }) => {
         setErrMessage,
         lastUpdate,
         setLastUpdate,
+        cart,
+        setCart,
+        setAddItem,
+        addItem,
       }}
     >
       {children}

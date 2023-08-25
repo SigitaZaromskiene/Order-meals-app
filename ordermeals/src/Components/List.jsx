@@ -1,5 +1,5 @@
 import { Global } from "./Global";
-import SmallBtn from "./SmallBtn";
+import AddBtn from "./AddBtn";
 import { useContext, useEffect } from "react";
 // import axios from "axios";
 import Message from "./Message";
@@ -37,6 +37,9 @@ function List() {
     }
   }
 
+  const addAmountHandler = ({ li }) => {
+    return li.amount + 1;
+  };
   return (
     <div className="wrapper">
       <ul className="list-container">
@@ -55,7 +58,7 @@ function List() {
                   <h4>Amount</h4>
                   <input value={li.amount}></input>
                 </div>
-                <SmallBtn text="+ Add" />
+                <AddBtn li={li} />
               </div>
             </li>
           ))
