@@ -20,4 +20,40 @@
       font-size: 2rem;
     }
   }
+
+  @include media(small) {
+    &__table {
+      width: 450px;
+      font-size: 1rem;
+      top: 120px;
+
+      h4 {
+        font-size: 1.4rem;
+      }
+
+      p {
+        font-size: 0.85rem;
+        color: white;
+      }
+    }
+
+    @include media(smallest) {
+      &__table {
+        width: 300px;
+        height: 350px;
+        font-size: 1rem;
+        top: 60px;
+
+        h4 {
+          font-size: 1.4rem;
+          text-align: center;
+        }
+
+        p {
+          font-size: 0.9rem;
+          color: white;
+        }
+      }
+    }
+  }
 }

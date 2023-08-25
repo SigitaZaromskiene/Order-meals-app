@@ -7,11 +7,20 @@
   margin-bottom: 100px;
   padding: 25px;
   @include flex(center, center, column, 30px);
+
+  @include media(small) {
+    margin-top: 50px;
+  }
+
   &__list {
     @include flex(space-between, center, row, 0px);
     border-bottom: 1px solid white;
     padding: 15px;
     width: 100%;
+
+    @include media(smallest) {
+      @include flex(space-between, center, column, 20px);
+    }
     &--left {
       @include flex(center, flex-start, column, 8px);
 
