@@ -1,5 +1,8 @@
 @import "./Styles/variables";
-@import "./Styles/base";
 @import "./Styles/mixins";
+@import "./Styles/base";
+
 @import "./Modules/hero";
 @import "./Modules/nav";
+@import "./Modules/list";
+@import "./Modules/btn-small";

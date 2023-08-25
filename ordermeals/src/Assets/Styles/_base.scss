@@ -4,5 +4,5 @@
 }
 
 .wrapper {
-  @extend %flex;
+  @include flex(center, center, column, 0);
 }

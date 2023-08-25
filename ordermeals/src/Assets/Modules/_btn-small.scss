@@ -1,0 +1,16 @@
+.btn-small {
+  background-color: $mainPurple;
+  color: white;
+  padding: 7px 25px;
+  border: none;
+  font-size: 0.9rem;
+  border-radius: 15px;
+  font-weight: 500;
+  border: 1px solid transparent;
+  cursor: pointer;
+  &:hover {
+    background-color: white;
+    color: $mainPurple;
+    border: 1px solid black;
+  }
+}

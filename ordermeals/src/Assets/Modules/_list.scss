@@ -1,0 +1,31 @@
+.list-container {
+  margin-top: 180px;
+  border: 2px solid white;
+  width: 70%;
+  border-radius: 15px;
+  height: auto;
+  margin-bottom: 100px;
+  padding: 25px;
+  @include flex(center, center, column, 30px);
+  &__list {
+    @include flex(space-between, center, row, 0px);
+    border-bottom: 1px solid white;
+    padding: 15px;
+    width: 100%;
+    &--left {
+      @include flex(center, flex-start, column, 8px);
+    }
+
+    &--right {
+      @include flex(space-between, center, column, 15px);
+      &--input {
+        @include flex(center, center, row, 15px);
+
+        input {
+          width: 55px;
+          padding: 5px;
+        }
+      }
+    }
+  }
+}
