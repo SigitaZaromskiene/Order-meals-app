@@ -1,42 +1,65 @@
 import { Global } from "./Global";
 import SmallBtn from "./SmallBtn";
 import { useContext, useEffect } from "react";
-import axios from "axios";
+// import axios from "axios";
+import Message from "./Message";
+
+const URL = "http://localhost:3006/menu";
 
 function List() {
-  const { menuList, setErrMessage } = useContext(Global);
+  const { menuList, setErrMessage, setMenuList } = useContext(Global);
+
+  // option with axios:
+
+  //   useEffect(() => {
+  //     axios
+  //       .get(URL)
+  //       .then((res) => {
+  //         setMenuList(res.data);
+  //       })
+  //       .catch((err) => setErrMessage(err.message));
+  //   }, [setErrMessage, setMenuList]);
 
   useEffect(() => {
-    if (menuList === null) {
-      return;
-    }
-    axios
-      .get(URL)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => setErrMessage(err.message));
+    getMenu();
   }, []);
+
+  async function getMenu() {
+    try {
+      const response = await fetch(URL);
+      if (!response.ok) {
+        throw new Error("OOOPS, something is wrong");
+      }
+      const data = await response.json();
+      setMenuList(data);
+    } catch (error) {
+      setErrMessage(error.message);
+    }
+  }
 
   return (
     <div className="wrapper">
       <ul className="list-container">
-        {menuList.map((li) => (
-          <li className="list-container__list">
-            <div className="list-container__list--left">
-              <h3>{li.name}</h3>
-              <i>{li.description}</i>
-              <p>{li.price} &euro;</p>
-            </div>
-            <div className="list-container__list--right">
-              <div className="list-container__list--right--input">
-                <h4>Amount</h4>
-                <input></input>
+        {menuList === null ? (
+          <Message />
+        ) : (
+          menuList.map((li) => (
+            <li className="list-container__list" key={li.id}>
+              <div className="list-container__list--left">
+                <h3>{li.name}</h3>
+                <i>{li.description}</i>
+                <p>{li.price} &euro;</p>
               </div>
-              <SmallBtn text="+ Add" />
-            </div>
-          </li>
-        ))}
+              <div className="list-container__list--right">
+                <div className="list-container__list--right--input">
+                  <h4>Amount</h4>
+                  <input value={li.amount}></input>
+                </div>
+                <SmallBtn text="+ Add" />
+              </div>
+            </li>
+          ))
+        )}
       </ul>
     </div>
   );

@@ -1,0 +1,15 @@
+.message-container {
+  position: fixed;
+  min-height: 100%;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  @include flex(center, center, column, 0);
+  background-color: rgba(128, 128, 128, 0.571);
+  color: red;
+  &__text {
+    border: 1px solid red;
+    padding: 15px 25px;
+    background-color: white;
+  }
+}
