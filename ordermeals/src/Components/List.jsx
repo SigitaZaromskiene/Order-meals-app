@@ -1,13 +1,15 @@
 import { Global } from "./Global";
-import AddBtn from "./AddBtn";
+
 import { useContext, useEffect } from "react";
 // import axios from "axios";
 import Message from "./Message";
+import ListAmount from "./ListAmount";
 
 const URL = "http://localhost:3006/menu";
 
 function List() {
-  const { menuList, setErrMessage, setMenuList } = useContext(Global);
+  const { menuList, setErrMessage, setMenuList, addItem, setAddItem } =
+    useContext(Global);
 
   // option with axios:
 
@@ -37,9 +39,6 @@ function List() {
     }
   }
 
-  const addAmountHandler = ({ li }) => {
-    return li.amount + 1;
-  };
   return (
     <div className="wrapper">
       <ul className="list-container">
@@ -54,11 +53,7 @@ function List() {
                 <p>{li.price} &euro;</p>
               </div>
               <div className="list-container__list--right">
-                <div className="list-container__list--right--input">
-                  <h4>Amount</h4>
-                  <input value={li.amount}></input>
-                </div>
-                <AddBtn li={li} />
+                <ListAmount li={li} />
               </div>
             </li>
           ))

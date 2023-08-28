@@ -9,7 +9,8 @@ export const GlobalProvider = ({ children }) => {
   const [lastUpdate, setLastUpdate] = useState(Date.now());
 
   const [cart, setCart] = useState(null);
-  const [addItem, setAddItem] = useState(null);
+  const [cartList, setCartList] = useState(null);
+
   return (
     <Global.Provider
       value={{
@@ -21,8 +22,8 @@ export const GlobalProvider = ({ children }) => {
         setLastUpdate,
         cart,
         setCart,
-        setAddItem,
-        addItem,
+        cartList,
+        setCartList,
       }}
     >
       {children}
