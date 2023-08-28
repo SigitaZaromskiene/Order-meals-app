@@ -8,25 +8,26 @@ function ListAmount({ li }) {
   const [addItem, setAddItem] = useState("");
   const { setCart, cart, setCartList, menuList } = useContext(Global);
 
-  const addAmountHandler = () => {
-    const item = menuList.filter((i) => i.id === li.id);
+  //   const addAmountHandler = () => {
+  //     const item = menuList.filter((i) => i.id === li.id);
 
-    console.log(item);
-    setCart({
-      id: item[0].id,
-      amount: Number(addItem),
-      price: item[0].price,
-      name: item[0].name,
-    });
+  //     setCart({
+  //       amount: Number(addItem),
+  //       price: item[0].price,
+  //       name: item[0].name,
+  //     });
+
+  //     console.log(cart);
+  //     setAddItem("");
+  //   };
+
+  const addAmountHandler = () => {
+    axios
+      .post(URL, { name: li.name, price: li.price, amount: addItem })
+      .then((res) => setCartList(res.data));
+
     setAddItem("");
   };
-
-  useEffect(() => {
-    if (cart === null) {
-      return;
-    }
-    axios.post(URL, cart).then((res) => setCartList(res.data));
-  }, [cart]);
 
   return (
     <div className="list-container__list--right--input">

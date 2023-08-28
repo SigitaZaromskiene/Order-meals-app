@@ -1,15 +1,14 @@
 import { Global } from "./Global";
 
 import { useContext, useEffect } from "react";
-// import axios from "axios";
+import axios from "axios";
 import Message from "./Message";
 import ListAmount from "./ListAmount";
 
 const URL = "http://localhost:3006/menu";
 
 function List() {
-  const { menuList, setErrMessage, setMenuList, addItem, setAddItem } =
-    useContext(Global);
+  const { menuList, setErrMessage, setMenuList } = useContext(Global);
 
   // option with axios:
 

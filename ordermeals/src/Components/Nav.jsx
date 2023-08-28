@@ -13,16 +13,17 @@ function Nav() {
     axios.get(URL).then((res) => setCartList(res.data));
   }, []);
 
-  const cartMealsCountHandler = () => {
-    if (cartList === null) {
-      return;
-    }
-    const result = cartList
-      .map((li) => Number(li.amount))
-      .reduce((acc, curr) => acc + curr, 0);
+  // const cartMealsCountHandler = () => {
+  //   if (cartList === null) {
+  //     return;
+  //   } else {
+  //     const result = cartList
+  //       .map((li) => Number(li.amount))
+  //       .reduce((acc, curr) => acc + curr, 0);
 
-    return result;
-  };
+  //     return result;
+  //   }
+  // };
   return (
     <div className="nav-container">
       <div className="nav-container__logo">ReactMeals</div>
@@ -31,7 +32,7 @@ function Nav() {
           <FontAwesomeIcon icon={faCartShopping} />
           <p>Your Cart</p>
         </div>
-        <p className="nav-container__cart--number">{cartMealsCountHandler()}</p>
+        <p className="nav-container__cart--number"></p>
       </div>
       <FontAwesomeIcon className="nav-container__cart--burger" icon={faBars} />
     </div>
