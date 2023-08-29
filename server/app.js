@@ -44,6 +44,31 @@ app.get("/menu", (req, res) => {
   });
 });
 
+app.get("/cartModal", (req, res) => {
+  const sql = `
+  SELECT name, amount, price
+  FROM carts
+
+  `;
+  con.query(sql, (err, result) => {
+    if (err) throw err;
+    res.json(result);
+  });
+});
+
+app.post("/carts", (req, res) => {
+  const sql = `
+  INSERT INTO carts (name, price, amount)
+  VALUES (?, ?, ?)
+
+  `;
+
+  con.query(sql, [req.body.name, req.body.price, req.body.amount], (err) => {
+    if (err) throw err;
+    res.json({});
+  });
+});
+
 app.listen(port, () => {
   console.log(`LN is on port number: ${port}`);
 });

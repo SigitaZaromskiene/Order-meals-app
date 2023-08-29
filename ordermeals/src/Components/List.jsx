@@ -1,8 +1,9 @@
 import { Global } from "./Global";
-import SmallBtn from "./SmallBtn";
+
 import { useContext, useEffect } from "react";
-// import axios from "axios";
+import axios from "axios";
 import Message from "./Message";
+import ListAmount from "./ListAmount";
 
 const URL = "http://localhost:3006/menu";
 
@@ -51,11 +52,7 @@ function List() {
                 <p>{li.price} &euro;</p>
               </div>
               <div className="list-container__list--right">
-                <div className="list-container__list--right--input">
-                  <h4>Amount</h4>
-                  <input value={li.amount}></input>
-                </div>
-                <SmallBtn text="+ Add" />
+                <ListAmount li={li} />
               </div>
             </li>
           ))
