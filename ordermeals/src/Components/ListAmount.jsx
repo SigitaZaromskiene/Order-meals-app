@@ -1,33 +1,45 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState } from "react";
 import { Global } from "./Global";
-import axios from "axios";
+import Message from "./Message";
+// import axios from "axios";
 
-const URL = "http://localhost:3006/carts";
+const URL = "http://localhost:3006/cats";
 
 function ListAmount({ li }) {
   const [addItem, setAddItem] = useState("");
-  const { setCart, cart, setCartList, menuList } = useContext(Global);
+  const { setCartList, setErrMessage, errMessage } = useContext(Global);
 
-  //   const addAmountHandler = () => {
-  //     const item = menuList.filter((i) => i.id === li.id);
+  // const addAmountHandler = () => {
+  //   axios
+  //     .post(URL, { name: li.name, price: li.price, amount: addItem })
+  //     .then((res) => setCartList(res.data));
 
-  //     setCart({
-  //       amount: Number(addItem),
-  //       price: item[0].price,
-  //       name: item[0].name,
-  //     });
+  //   setAddItem("");
+  // };
 
-  //     console.log(cart);
-  //     setAddItem("");
-  //   };
-
-  const addAmountHandler = () => {
-    axios
-      .post(URL, { name: li.name, price: li.price, amount: addItem })
-      .then((res) => setCartList(res.data));
-
+  async function addAmountHandler() {
+    try {
+      const response = await fetch(URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: li.name,
+          price: li.price,
+          amount: addItem,
+        }),
+      });
+      if (!response.ok) {
+        throw new Error("Cannot add to the cart");
+      }
+      const data = await response.json();
+      setCartList(data);
+    } catch (error) {
+      setErrMessage(error.message);
+    }
     setAddItem("");
-  };
+  }
 
   return (
     <div className="list-container__list--right--input">
@@ -41,6 +53,7 @@ function ListAmount({ li }) {
       <button className="btn-small" onClick={addAmountHandler}>
         + Add
       </button>
+      {errMessage ? <Message /> : null}
     </div>
   );
 }
