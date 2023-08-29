@@ -3,11 +3,12 @@ import { Global } from "./Global";
 import Message from "./Message";
 // import axios from "axios";
 
-const URL = "http://localhost:3006/cats";
+const URL = "http://localhost:3006/carts";
 
 function ListAmount({ li }) {
   const [addItem, setAddItem] = useState("");
-  const { setCartList, setErrMessage, errMessage } = useContext(Global);
+  const { setCartList, setErrMessage, errMessage, setLastUpdate } =
+    useContext(Global);
 
   // const addAmountHandler = () => {
   //   axios
@@ -37,6 +38,7 @@ function ListAmount({ li }) {
       setCartList(data);
     } catch (error) {
       setErrMessage(error.message);
+      setLastUpdate(Date.now());
     }
     setAddItem("");
   }
