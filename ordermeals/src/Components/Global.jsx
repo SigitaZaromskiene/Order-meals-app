@@ -14,12 +14,6 @@ export const GlobalProvider = ({ children }) => {
 
   const [modal, setModal] = useState(false);
 
-  useEffect(() => {
-    if (cartListResponse === null) {
-      return;
-    }
-    setLastUpdate(Date.now());
-  }, [cartListResponse]);
   return (
     <Global.Provider
       value={{

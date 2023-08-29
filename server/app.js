@@ -46,7 +46,7 @@ app.get("/menu", (req, res) => {
 
 app.get("/cartModal", (req, res) => {
   const sql = `
-  SELECT name, amount, price
+  SELECT id, name, amount, price
   FROM carts
 
   `;

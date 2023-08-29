@@ -1,6 +1,5 @@
 .modal-container {
-  @include flex(center, flex-start, row, 50px);
-  padding-top: 400px;
+  @include flex(center, center, column, 50px);
   position: absolute;
   top: 0;
   right: 0;
@@ -21,6 +20,35 @@
       @include flex(space-between, center, row, 50px);
       padding: 15px;
 
+      &--total {
+        font-size: 1.5rem;
+      }
+
+      &--lower-btns {
+        margin-top: 25px;
+        margin-left: 50%;
+        @include flex(space-between, center, row, 10px);
+
+        button {
+          padding: 5px 30px;
+          background-color: $mainPurple;
+          font-size: 1.1rem;
+          border-radius: 15px;
+          cursor: pointer;
+          border: 1px solid transparent;
+          &:hover {
+            background-color: white;
+            color: $mainPurple;
+            border: 1px solid black;
+          }
+        }
+      }
+
+      &--total {
+        @include flex(space-between, center, row, 50px);
+        margin-top: 15px;
+      }
+
       &--left {
         @include flex(center, flex-start, column, 10px);
 
@@ -33,12 +61,11 @@
         @include flex(center, center, row, 10px);
 
         button {
-          padding: 5px 30px;
+          padding: 5px 20px;
           background-color: $mainPurple;
           font-size: 1.1rem;
           border-radius: 15px;
           cursor: pointer;
-
           border: 1px solid transparent;
           &:hover {
             background-color: white;

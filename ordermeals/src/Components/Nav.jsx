@@ -9,7 +9,7 @@ const URL = "http://localhost:3006/cartModal";
 
 function Nav() {
   const {
-    lastUpdate,
+    cartList,
     cartListResponse,
     setErrMessage,
     setCartListResponse,
@@ -22,7 +22,7 @@ function Nav() {
       .get(URL)
       .then((res) => setCartListResponse(res.data))
       .catch((err) => setErrMessage(err.message));
-  }, [lastUpdate]);
+  }, [cartList]);
 
   const cartAmountHandler = () => {
     if (cartListResponse === null) {
