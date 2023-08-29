@@ -12,6 +12,8 @@ export const GlobalProvider = ({ children }) => {
   const [cartList, setCartList] = useState(null);
   const [cartListResponse, setCartListResponse] = useState(null);
 
+  const [modal, setModal] = useState(false);
+
   useEffect(() => {
     if (cartListResponse === null) {
       return;
@@ -33,6 +35,8 @@ export const GlobalProvider = ({ children }) => {
         setCartList,
         setCartListResponse,
         cartListResponse,
+        setModal,
+        modal,
       }}
     >
       {children}
