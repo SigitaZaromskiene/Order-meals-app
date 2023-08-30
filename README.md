@@ -10,6 +10,7 @@ This project is for educational porpuses only.
 -   Using controlled forms
 -   Practising SCSS BEM
 -   Practising post, get, delete and put methods
+-   Git/Github/Node/NPM
 
 
 
