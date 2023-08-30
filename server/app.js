@@ -46,7 +46,7 @@ app.get("/menu", (req, res) => {
 
 app.get("/cartModal", (req, res) => {
   const sql = `
-  SELECT name, amount, price
+  SELECT id, name, amount, price
   FROM carts
 
   `;
@@ -64,6 +64,29 @@ app.post("/carts", (req, res) => {
   `;
 
   con.query(sql, [req.body.name, req.body.price, req.body.amount], (err) => {
+    if (err) throw err;
+    res.json({});
+  });
+});
+
+app.delete("/cartDelete", (req, res) => {
+  const sql = `
+        DELETE FROM carts
+       
+    `;
+  con.query(sql, [req.params.id], (err) => {
+    if (err) throw err;
+    res.json({});
+  });
+});
+
+app.put("/modal/:id", (req, res) => {
+  const sql = `
+        UPDATE carts
+        SET amount = ?
+        WHERE id = ?
+    `;
+  con.query(sql, [req.body.amount, req.params.id], (err) => {
     if (err) throw err;
     res.json({});
   });

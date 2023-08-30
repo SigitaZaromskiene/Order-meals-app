@@ -12,12 +12,13 @@ export const GlobalProvider = ({ children }) => {
   const [cartList, setCartList] = useState(null);
   const [cartListResponse, setCartListResponse] = useState(null);
 
-  useEffect(() => {
-    if (cartListResponse === null) {
-      return;
-    }
-    setLastUpdate(Date.now());
-  }, [cartListResponse]);
+  const [editSum, setEditSum] = useState(null);
+  const [modal, setModal] = useState(false);
+
+  const [editSumResponse, setEditSumResponse] = useState(null);
+
+
+
   return (
     <Global.Provider
       value={{
@@ -33,6 +34,12 @@ export const GlobalProvider = ({ children }) => {
         setCartList,
         setCartListResponse,
         cartListResponse,
+        setModal,
+        modal,
+        setEditSum,
+        editSum,
+        setEditSumResponse,
+        editSumResponse,
       }}
     >
       {children}
