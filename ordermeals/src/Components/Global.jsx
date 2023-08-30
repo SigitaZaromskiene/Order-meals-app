@@ -12,7 +12,9 @@ export const GlobalProvider = ({ children }) => {
   const [cartList, setCartList] = useState(null);
   const [cartListResponse, setCartListResponse] = useState(null);
 
+  const [editSum, setEditSum] = useState(null);
   const [modal, setModal] = useState(false);
+  const [editSumResponse, setEditSumResponse] = useState(null);
 
   return (
     <Global.Provider
@@ -31,6 +33,10 @@ export const GlobalProvider = ({ children }) => {
         cartListResponse,
         setModal,
         modal,
+        setEditSum,
+        editSum,
+        setEditSumResponse,
+        editSumResponse,
       }}
     >
       {children}

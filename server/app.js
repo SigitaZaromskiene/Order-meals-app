@@ -69,6 +69,18 @@ app.post("/carts", (req, res) => {
   });
 });
 
+app.put("/modal/:id", (req, res) => {
+  const sql = `
+        UPDATE carts
+        SET amount = ?
+        WHERE id = ?
+    `;
+  con.query(sql, [req.body.amount, req.params.id], (err) => {
+    if (err) throw err;
+    res.json({});
+  });
+});
+
 app.listen(port, () => {
   console.log(`LN is on port number: ${port}`);
 });
