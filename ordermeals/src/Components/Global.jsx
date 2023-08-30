@@ -14,7 +14,10 @@ export const GlobalProvider = ({ children }) => {
 
   const [editSum, setEditSum] = useState(null);
   const [modal, setModal] = useState(false);
+
   const [editSumResponse, setEditSumResponse] = useState(null);
+
+
 
   return (
     <Global.Provider

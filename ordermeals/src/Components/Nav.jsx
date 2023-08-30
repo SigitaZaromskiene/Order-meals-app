@@ -20,7 +20,9 @@ function Nav() {
   useEffect(() => {
     axios
       .get(URL)
-      .then((res) => setCartListResponse(res.data))
+      .then((res) => {
+        setCartListResponse(res.data);
+      })
       .catch((err) => setErrMessage(err.message));
   }, [cartList]);
 
@@ -43,7 +45,11 @@ function Nav() {
             <FontAwesomeIcon icon={faCartShopping} />
             <p>Your Cart</p>
           </div>
-          <p className="nav-container__cart--number">{cartAmountHandler()}</p>
+          {!cartListResponse ? (
+            0
+          ) : (
+            <p className="nav-container__cart--number">{cartAmountHandler()}</p>
+          )}
         </div>
         <FontAwesomeIcon
           className="nav-container__cart--burger"

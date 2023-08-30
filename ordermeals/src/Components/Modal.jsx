@@ -4,17 +4,16 @@ import axios from "axios";
 import ModalBtns from "./ModalBtns";
 
 const URL = "http://localhost:3006/cartModal";
+const URL1 = "http://localhost:3006/cartDelete";
 
 function Modal() {
   const {
     setModal,
-    cartList,
     setErrMessage,
     setCartListResponse,
     cartListResponse,
-    editSum,
-    lastUpdate,
     editSumResponse,
+    modal,
   } = useContext(Global);
 
   useEffect(() => {
@@ -27,39 +26,49 @@ function Modal() {
   const getTotalCart = () => {
     const sum = cartListResponse.map((li) => li.amount * li.price);
 
-    console.log(sum);
     const total = sum.reduce((acc, curr) => acc + curr);
     return Number(total).toFixed(2, 0);
   };
 
-  return (
-    <div className="modal-container">
-      <ul className="modal-container__modal">
-        {cartListResponse === null
-          ? "No items yet"
-          : cartListResponse.map((li) => (
-              <li key={li.id} className="modal-container__modal__list">
-                <div className="modal-container__modal__list--left">
-                  <h4>{li.name}</h4>
-                  <div className="modal-container__modal__list--left--price">
-                    <p>{li.price.toFixed(2, 0)}</p>
-                    <p>{li.amount}</p>
-                  </div>
-                </div>
-                <ModalBtns li={li} />
-              </li>
-            ))}
+  const orderModalHandler = () => {
+    setModal(false);
+    setErrMessage("Thank you for your order");
 
-        <div className="modal-container__modal__list--total">
-          <strong>Total amount</strong>
-          <p>{getTotalCart()} &euro;</p>
+    axios.delete(URL1, cartListResponse).then((res) => console.log(res));
+  };
+
+  return (
+    <>
+      {modal === true ? (
+        <div className="modal-container">
+          <ul className="modal-container__modal">
+            {cartListResponse === null
+              ? "No items yet"
+              : cartListResponse.map((li) => (
+                  <li key={li.id} className="modal-container__modal__list">
+                    <div className="modal-container__modal__list--left">
+                      <h4>{li.name}</h4>
+                      <div className="modal-container__modal__list--left--price">
+                        <p>{li.price.toFixed(2, 0)}</p>
+                        <p> x {li.amount}</p>
+                      </div>
+                    </div>
+                    <ModalBtns li={li} />
+                  </li>
+                ))}
+
+            <div className="modal-container__modal__list--total">
+              <strong>Total amount</strong>
+              <p>{getTotalCart()} &euro;</p>
+            </div>
+            <div className="modal-container__modal__list--lower-btns">
+              <button onClick={() => setModal(false)}>Close</button>
+              <button onClick={orderModalHandler}>Order</button>
+            </div>
+          </ul>
         </div>
-        <div className="modal-container__modal__list--lower-btns">
-          <button onClick={() => setModal(false)}>Close</button>
-          <button>Order</button>
-        </div>
-      </ul>
-    </div>
+      ) : null}
+    </>
   );
 }
 

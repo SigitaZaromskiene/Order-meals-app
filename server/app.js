@@ -69,6 +69,17 @@ app.post("/carts", (req, res) => {
   });
 });
 
+app.delete("/cartDelete", (req, res) => {
+  const sql = `
+        DELETE FROM carts
+       
+    `;
+  con.query(sql, [req.params.id], (err) => {
+    if (err) throw err;
+    res.json({});
+  });
+});
+
 app.put("/modal/:id", (req, res) => {
   const sql = `
         UPDATE carts

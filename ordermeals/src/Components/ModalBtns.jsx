@@ -5,10 +5,16 @@ import axios from "axios";
 const URL = "http://localhost:3006/modal";
 
 function ModalBtns({ li }) {
-  const { setEditSum, editSum, setEditSumResponse, lastUpdate, cartList } =
-    useContext(Global);
+  const { setEditSum, editSum, setEditSumResponse } = useContext(Global);
   const changeCartAmountPlusHandler = () => {
     setEditSum({ id: li.id, amount: li.amount + 1 });
+  };
+
+  const changeCartAmountMinusHandler = () => {
+    if (li.amount <= 0) {
+      return;
+    }
+    setEditSum({ id: li.id, amount: li.amount - 1 });
   };
 
   useEffect(() => {
@@ -25,7 +31,7 @@ function ModalBtns({ li }) {
   return (
     <div className="modal-container__modal__list--right">
       <button onClick={changeCartAmountPlusHandler}>+</button>
-      <button>-</button>
+      <button onClick={changeCartAmountMinusHandler}>-</button>
     </div>
   );
 }
