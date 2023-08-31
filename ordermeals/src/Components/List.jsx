@@ -1,5 +1,5 @@
 import { Global } from "./Global";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import Message from "./Message";
 import ListAmount from "./ListAmount";
@@ -8,6 +8,8 @@ const URL = "http://localhost:3006/menu";
 
 function List() {
   const { menuList, setErrMessage, setMenuList } = useContext(Global);
+
+  const [isLoading, setIsLoading] = useState(true);
 
   // option with axios:
 
@@ -35,6 +37,11 @@ function List() {
     } catch (error) {
       setErrMessage(error.message);
     }
+    setIsLoading(false);
+  }
+
+  if (isLoading) {
+    return <h1 style={{ textAlign: "center" }}>Loading...</h1>;
   }
 
   return (
