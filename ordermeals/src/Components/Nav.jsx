@@ -15,6 +15,7 @@ function Nav() {
     setCartListResponse,
     setModal,
     modal,
+    cartDelete,
   } = useContext(Global);
 
   useEffect(() => {
@@ -26,12 +27,23 @@ function Nav() {
       .catch((err) => setErrMessage(err.message));
   }, [cartList]);
 
+  useEffect(() => {
+    axios
+      .get(URL)
+      .then((res) => {
+        setCartListResponse(res.data);
+      })
+      .catch((err) => setErrMessage(err.message));
+  }, [cartDelete]);
+
   const cartAmountHandler = () => {
     if (cartListResponse === null) {
       return;
     }
     return cartListResponse.reduce((acc, curr) => acc + curr.amount, 0);
   };
+
+  console.log(cartListResponse);
 
   return (
     <>
@@ -45,8 +57,8 @@ function Nav() {
             <FontAwesomeIcon icon={faCartShopping} />
             <p>Your Cart</p>
           </div>
-          {!cartListResponse ? (
-            0
+          {cartListResponse === [] ? (
+            <p className="nav-container__cart--number">0</p>
           ) : (
             <p className="nav-container__cart--number">{cartAmountHandler()}</p>
           )}

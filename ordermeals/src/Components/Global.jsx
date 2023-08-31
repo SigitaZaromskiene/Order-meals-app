@@ -16,8 +16,7 @@ export const GlobalProvider = ({ children }) => {
   const [modal, setModal] = useState(false);
 
   const [editSumResponse, setEditSumResponse] = useState(null);
-
-
+  const [cartDelete, setCartDelete] = useState(null);
 
   return (
     <Global.Provider
@@ -40,6 +39,8 @@ export const GlobalProvider = ({ children }) => {
         editSum,
         setEditSumResponse,
         editSumResponse,
+        cartDelete,
+        setCartDelete,
       }}
     >
       {children}

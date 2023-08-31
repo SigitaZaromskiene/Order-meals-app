@@ -15,6 +15,10 @@
     border: 1px solid black;
     list-style: none;
 
+    &-error {
+      color: red;
+    }
+
     &__list {
       border-bottom: 1px solid $mainPurple;
       @include flex(space-between, center, row, 50px);

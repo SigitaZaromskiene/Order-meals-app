@@ -74,7 +74,7 @@ app.delete("/cartDelete", (req, res) => {
         DELETE FROM carts
        
     `;
-  con.query(sql, [req.params.id], (err) => {
+  con.query(sql, (err) => {
     if (err) throw err;
     res.json({});
   });
