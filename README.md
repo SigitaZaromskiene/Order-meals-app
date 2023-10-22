@@ -9,17 +9,7 @@ This project is for educational porpuses only.
 
 🎨 BEM SCSS Styling: With BEM methodology and SCSS styling, our app is not only delicious but visually appealing, providing an eye-catching and maintainable design.
 
-💼 Key Features:
 
-Effortless Ordering: Our user-friendly interface allows you to place orders with ease, ensuring a smooth and efficient process.
-
-Dynamic Menu: Explore a dynamic menu that's regularly updated with the latest dishes, offering something for everyone.
-
-Order Tracking: Keep an eye on the status of your orders, from preparation to delivery, so you're always in the know.
-
-Secure Payments: Your payments are handled securely, so you can dine with peace of mind.
-
-MariaDB Integration: Efficient database management ensures that your orders are processed accurately and securely.
 
 
 # Getting Started with Create React App
